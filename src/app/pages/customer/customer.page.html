@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Hola! {{nombre}} {{apellido}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="div-usuario">
+    <img src="../../../assets/images/user.jpeg" class="usuario"/>
+  </div>
+
+  <!-- Explicacion de ion-grid, sistema de grillas en ionic -->
+
+  <div class="informacion-usuario">
+    <ion-grid>
+      <ion-row>
+        <ion-col offset="3" size="3">
+          <ion-row>Nombre Usuario</ion-row>
+          <ion-row>Tipo Identificacion</ion-row>
+          <ion-row>Identificacion</ion-row>
+          <ion-row>Telefono</ion-row>
+          <ion-row>Email</ion-row>
+          <ion-row>Direccion</ion-row>
+        </ion-col>
+        <ion-col size="3">
+          <ion-row>{{nombreUsuario}}</ion-row>
+          <ion-row>{{tipIdentificaicon}}</ion-row>
+          <ion-row>{{identificacion}}</ion-row>
+          <ion-row>{{telefono}}</ion-row>
+          <ion-row>{{email}}</ion-row>
+          <ion-row>{{direccion}}</ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- La interpolacion tambien se da de un elemento html dentro del mismo html -->
+  <ion-input #entrada fill="solid"></ion-input>
+  <label>Valide que quiera cambiar el nombre a {{entrada.value}}</label>
+</ion-content>
+
+
