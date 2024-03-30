@@ -6,7 +6,7 @@
 
 <ion-content [fullscreen]="true">
   <div class="div-usuario">
-    <img src="../../../assets/images/user.jpeg" class="usuario"/>
+    <img [src]="urlImagen" class="usuario"/>
   </div>
 
   <!-- Explicacion de ion-grid, sistema de grillas en ionic -->
@@ -28,15 +28,39 @@
           <ion-row>{{identificacion}}</ion-row>
           <ion-row>{{telefono}}</ion-row>
           <ion-row>{{email}}</ion-row>
-          <ion-row>{{direccion}}</ion-row>
+          <!-- Property Binding 
+            Se colocan propiedades en direccion que se modifican desde el back
+          -->
+          <!-- Event Binding 
+            Se envia a ejecutar un evento input a un metodo back, con el fin de cambiar
+            una propiedad
+          -->
+          <ion-input #usuarioDireccion [value]="direccion" [disabled]="inhabilitar" 
+            (input)="modificarDireccion($event)"></ion-input>
         </ion-col>
       </ion-row>
     </ion-grid>
+
+    <!-- Esto se coloca con el fin de ver el resultado de event binding -->
+    <label>La direccion actual es {{direccion}}</label>
   </div>
 
   <!-- La interpolacion tambien se da de un elemento html dentro del mismo html -->
-  <ion-input #entrada fill="solid"></ion-input>
-  <label>Valide que quiera cambiar el nombre a {{entrada.value}}</label>
+  <ion-input #entrada fill="solid" [disabled]="inhabilitarNombre"></ion-input>
+  <label  [hidden]="inhabilitarNombre">Valide que quiera cambiar el nombre a {{entrada.value}}</label>
+  <!-- Event Binding
+    Son eventos javascript que se asignan a un elemento especifico, 
+    y ejecutan un metodo en el "Back"
+
+    (click)
+    (change)
+    (mouseover)
+    (mouseout)
+    (keydown)
+    (keyup)
+  -->
+  <br>
+  <ion-button (click)="guardarNombre()" [disabled]="inhabilitarNombre">Guardar Nombre</ion-button>
 </ion-content>
 
 
